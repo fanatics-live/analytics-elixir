@@ -1,8 +1,5 @@
 defmodule Segment do
-  @moduledoc "README.md"
-             |> File.read!()
-             |> String.split("<!-- MDOC !-->")
-             |> Enum.fetch!(1)
+  @moduledoc File.read!("README.md")
 
   @type segment_event ::
           Segment.Analytics.Track.t()

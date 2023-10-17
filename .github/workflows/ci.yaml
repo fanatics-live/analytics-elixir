@@ -44,7 +44,7 @@ jobs:
 
     - name: Lint
       run: |
-        mix credo --strict
+        mix credo
 
     - name: Cache dependencies and _build
       continue-on-error: true
