@@ -12,28 +12,20 @@ defmodule Segment do
           | Segment.Analytics.Group.t()
           | Segment.Analytics.Page.t()
 
+  alias Segment.Batcher
+
   @doc """
   Start the configured GenServer for handling Segment events with the Segment HTTP Source API Write Key
 
-  By default if nothing is configured it will start `Segment.Analytics.Batcher`
+  By default if nothing is configured it will start `Segment.Batcher`
   """
-  @spec start_link(String.t()) :: GenServer.on_start()
-  def start_link(api_key) do
-    Segment.Config.service().start_link(api_key)
-  end
-
-  @doc """
-  Start the configured GenServer for handling Segment events with the Segment HTTP Source API Write Key and a custom Tesla Adapter.
-
-  By default if nothing is configured it will start `Segment.Analytics.Batcher`
-  """
-  @spec start_link(String.t(), Segment.Http.adapter()) :: GenServer.on_start()
-  def start_link(api_key, adapter) do
-    Segment.Config.service().start_link(api_key, adapter)
+  @spec start_link(Keyword.t()) :: GenServer.on_start()
+  def start_link(options) do
+    Batcher.start_link(options)
   end
 
   @spec child_spec(map()) :: map()
   def child_spec(opts) do
-    Segment.Config.service().child_spec(opts)
+    Batcher.child_spec(opts)
   end
 end

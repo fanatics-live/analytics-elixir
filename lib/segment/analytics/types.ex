@@ -145,7 +145,7 @@ defmodule Segment.Analytics.Context do
 
   @type t :: %__MODULE__{}
 
-  def update(context = %__MODULE__{}) do
+  def update(%__MODULE__{} = context) do
     %{context | library: %{name: @library_name, version: @library_version}}
   end
 
@@ -154,7 +154,8 @@ defmodule Segment.Analytics.Context do
   end
 
   def new(attrs) do
-    struct(__MODULE__, attrs)
-    |> update
+    __MODULE__
+    |> struct(attrs)
+    |> update()
   end
 end

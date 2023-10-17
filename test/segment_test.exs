@@ -11,7 +11,8 @@ defmodule SegmentTest do
       self()
     )
 
-    Segment.start_link(System.get_env("SEGMENT_KEY"))
+    storage = %PersistentQueue.DroppingStorage{}
+    Segment.start_link(api_key: System.get_env("SEGMENT_KEY"), storage: storage)
 
     Segment.Analytics.track("user1", "track debugging #{elem(:os.timestamp(), 2)}")
 
@@ -39,7 +40,7 @@ defmodule SegmentTest do
 
     Segment.Analytics.page("user1", "page debugging #{elem(:os.timestamp(), 2)}")
 
-    Segment.Analytics.Batcher.flush()
+    Segment.Batcher.flush()
 
     test_ended = :erlang.system_time()
 

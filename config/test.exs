@@ -1,3 +1,3 @@
 import Config
 
-config :segment, :send_to_http, true
+config :segment, :tesla, adapter: Segment.HTTP.Stub
