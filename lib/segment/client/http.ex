@@ -16,16 +16,18 @@ defmodule Segment.HTTP do
 
   The retry uses a linear back-off strategy when retrying the Segment API.
   """
-  @type client :: Tesla.Client.t()
-  @type adapter :: Tesla.Client.adapter()
 
-  require Logger
   use Retry
 
   alias Segment.Analytics.Context
   alias Segment.Config
   alias Tesla.Adapter.Hackney
   alias Tesla.Middleware
+
+  require Logger
+
+  @type client :: Tesla.Client.t()
+  @type adapter :: Tesla.Client.adapter()
 
   @doc """
   Create a Tesla client with the Segment Source Write API Key
