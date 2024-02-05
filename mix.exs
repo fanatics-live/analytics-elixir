@@ -34,7 +34,7 @@ defmodule AnalyticsElixir.Mixfile do
       {:credo, "~> 1.7", only: [:dev, :test]},
       {:credo_contrib, "~> 0.2.0", only: [:dev, :test]},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.24", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.31", only: :dev, runtime: false}
     ]
   end
 
