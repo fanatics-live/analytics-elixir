@@ -2,9 +2,10 @@ defmodule Segment.Analytics do
   @moduledoc """
   The `Segment.Analytics` module is the easiest way to send Segment events and provides convenience methods for `track`, `identify,` `screen`, `alias`, `group`, and `page` calls
   """
-  alias Segment.Analytics.{Alias, Context, Group, Identify, Page, Screen, Track}
 
   import Segment.Batcher, only: [call: 1]
+
+  alias Segment.Analytics.{Alias, Context, Group, Identify, Page, Screen, Track}
 
   @type segment_id :: String.t() | integer()
 

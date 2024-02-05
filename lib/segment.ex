@@ -1,6 +1,8 @@
 defmodule Segment do
   @moduledoc File.read!("README.md")
 
+  alias Segment.Batcher
+
   @type segment_event ::
           Segment.Analytics.Track.t()
           | Segment.Analytics.Identify.t()
@@ -8,8 +10,6 @@ defmodule Segment do
           | Segment.Analytics.Alias.t()
           | Segment.Analytics.Group.t()
           | Segment.Analytics.Page.t()
-
-  alias Segment.Batcher
 
   @doc """
   Start the configured GenServer for handling Segment events with the Segment HTTP Source API Write Key

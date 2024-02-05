@@ -88,7 +88,8 @@ defmodule Segment.Batcher do
         batch = Enum.reverse(batch)
         batches = PersistentQueue.enqueue(batches, batch)
         state = schedule_batch_send(state, 0)
-        %{state | batches: batches, batch: [event], current_batch_size: 1, size: size + 1}
+        state = %{state | batches: batches, batch: [event], current_batch_size: 1, size: size + 1}
+        {:noreply, state}
     end
   end
 
