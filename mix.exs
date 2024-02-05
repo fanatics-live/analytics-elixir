@@ -28,7 +28,7 @@ defmodule AnalyticsElixir.Mixfile do
       {:jason, ">= 1.0.0"},
       {:retry, "~> 0.13"},
       {:telemetry, "~> 0.4.2 or ~> 1.0"},
-      {:tesla, "~> 1.2"},
+      {:tesla, "~> 1.8"},
       {:persistent_queue, github: "fanatics-live/persistent_queue"},
       {:mox, "~> 1.1", only: :test},
       {:credo, "~> 1.7", only: [:dev, :test]},
